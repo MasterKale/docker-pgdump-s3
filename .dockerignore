@@ -1,1 +1,8 @@
 .git
+app/test/
+.gitignore
+.travis.yml
+LICENSE
+README.md
+*.env
+node_modules/

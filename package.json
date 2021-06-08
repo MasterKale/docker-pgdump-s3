@@ -1,7 +1,7 @@
 {
-  "name": "pgdump-aws-lambda",
-  "version": "1.1.6",
-  "description": "Lambda function for executing pg_dump and streaming the output to s3.",
+  "name": "@iamkale/docker-pgdump-s3",
+  "version": "1.2.0",
+  "description": "A Docker image for scheduling regular backups of Postgres to S3",
   "main": "index.js",
   "dependencies": {
     "bluebird": "^3.5.3",
@@ -9,11 +9,11 @@
     "through2": "^3.0.0"
   },
   "devDependencies": {
-    "cron": "^1.2.1",
     "aws-sdk": "^2.45.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "coveralls": "^2.13.0",
+    "cron": "^1.2.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-airbnb-base": "^11.1.3",
@@ -34,19 +34,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jameshy/pgdump-aws-lambda.git"
+    "url": "git+https://github.com/MasterKale/docker-pgdump-s3.git"
   },
   "keywords": [
-    "lambda",
-    "s3",
-    "pg_dump",
+    "docker",
     "postgresql",
-    "backup"
+    "backup",
+    "s3",
+    "pg_dump"
   ],
-  "author": "James Hutchby",
+  "author": "Matthew Miller",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jameshy/pgdump-aws-lambda/issues"
+    "url": "https://github.com/MasterKale/docker-pgdump-s3/issues"
   },
-  "homepage": "https://github.com/jameshy/pgdump-aws-lambda#readme"
+  "homepage": "https://github.com/MasterKale/docker-pgdump-s3#readme"
 }
