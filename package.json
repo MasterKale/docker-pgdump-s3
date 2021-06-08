@@ -9,11 +9,11 @@
     "through2": "^3.0.0"
   },
   "devDependencies": {
-    "cron": "^1.2.1",
     "aws-sdk": "^2.45.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "coveralls": "^2.13.0",
+    "cron": "^1.2.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-airbnb-base": "^11.1.3",
