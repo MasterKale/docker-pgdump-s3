@@ -1,1 +1,7 @@
 .git
+test/
+.gitignore
+.travis.yml
+LICENSE
+README.md
+*.env
