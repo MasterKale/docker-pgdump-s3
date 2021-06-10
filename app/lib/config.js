@@ -1,8 +1,6 @@
-const path = require('path')
-
 module.exports = {
     S3_REGION: process.env.S3_REGION,
-    PGDUMP_PATH: "/usr/bin/",
+    PGDUMP_PATH: '/usr/bin/',
     PGDATABASE: process.env.PGDATABASE,
     PGUSER: process.env.PGUSER,
     PGPASSWORD: process.env.PGPASSWORD,
