@@ -7,6 +7,6 @@ services:
     env_file:
       - service.env
   db:
-    image: postgres:alpine
+    image: postgres:13.3
     environment:
       POSTGRES_PASSWORD: password
