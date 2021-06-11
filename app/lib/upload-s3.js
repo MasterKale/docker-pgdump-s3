@@ -11,7 +11,7 @@ module.exports = function (stream, config, key) {
         throw new Error('invalid stream provided')
     }
     return new Promise((resolve, reject) => {
-        const timer = new Timer();
+        const timer = new Timer()
         console.log(
             'streaming dump to s3 ' +
             `bucket=${config.S3_BUCKET}, ` +
@@ -24,7 +24,7 @@ module.exports = function (stream, config, key) {
             params: {
                 Bucket: config.S3_BUCKET,
                 Key: key,
-                //ACL: 'bucket-owner-full-control',
+                // ACL: 'bucket-owner-full-control',
                 StorageClass: config.S3_STORAGE_CLASS
             },
             endpoint: config.S3_URL

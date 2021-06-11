@@ -2,12 +2,14 @@ const utils = require('./utils')
 const encryption = require('./encryption')
 const Promise = require('bluebird')
 // todo: make these const, (mockSpawn doesn't allow this, so remove mockSpawn)
-var uploadS3 = require('./upload-s3')
-var pgdump = require('./pgdump')
+/* eslint-disable prefer-const */
+let uploadS3 = require('./upload-s3')
+let pgdump = require('./pgdump')
+/* eslint-enable prefer-const */
 
 const DEFAULT_CONFIG = require('./config')
 
-function handler(event, context) {
+function handler(event) {
     const config = Object.assign({}, DEFAULT_CONFIG, event)
 
     if (!config.PGDATABASE) {

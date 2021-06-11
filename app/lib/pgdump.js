@@ -14,7 +14,7 @@ function spawnPgDump(config) {
     const env = Object.assign({}, config, {
         LD_LIBRARY_PATH: config.PGDUMP_PATH
     })
-    return spawn(pgDumpPath, process.env.PG_PARAMS.replace(/["']+/g, '').split(" "), {
+    return spawn(pgDumpPath, process.env.PG_PARAMS.replace(/["']+/g, '').split(' '), {
         env
     })
 }
@@ -57,7 +57,7 @@ function pgdumpWrapper(config, pgDumpSpawnFn = spawnPgDump) {
             if (!headerChecked) {
                 headerChecked = true
                 const chunkStr = chunk.toString('utf8')
-                const stdSQL = "--\n-- PostgreSQL database dump"
+                const stdSQL = '--\n-- PostgreSQL database dump'
                 // check if we got something back from the server
                 // that was longer than 40 chars, so probably actual data
                 // and not just the psql header message
