@@ -6,7 +6,7 @@
 A Docker image for scheduling regular backups of Postgres to S3 via `pgdump`.
 
 The service utilizes AWS S3 multi-part uploads & streaming. This means there is no need for large amounts of local storage where
-the docker container is running, as the data is proxied directly to AWS without being written to disk. This results in a low memory footprint (~50mb) for the running service during backup, and fairly low CPU usage (~5% when testing during dumping).
+the docker container is running, as the data is proxied directly to AWS without being written to disk. This results in a low memory footprint (approx. 50mb) for the running service during backup, and fairly low CPU usage (approx. 5% when testing during dumping).
 
 The architecture looks like:
 
