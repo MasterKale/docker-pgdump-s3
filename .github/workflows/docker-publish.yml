@@ -39,5 +39,11 @@ jobs:
         with:
           push: true
           tags: iamkale/docker-pgdump-s3:latest,iamkale/docker-pgdump-s3:${{ steps.refparts.outputs._2 }}
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          short-description: ${{ github.event.repository.description }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
