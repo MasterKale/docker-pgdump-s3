@@ -38,6 +38,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: masterkale/docker-pgdump-s3:latest,MasterKale/docker-pgdump-s3:${{ steps.refparts._2 }}
+          tags: masterkale/docker-pgdump-s3:latest,MasterKale/docker-pgdump-s3:${{ steps.refparts.outputs._2 }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
