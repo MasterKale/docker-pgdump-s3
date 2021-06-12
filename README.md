@@ -19,6 +19,17 @@ The architecture looks like:
 - AWS credentials to push to S3 bucket
 - Postgres host, username, password
 
+### A warning about `pgdump`
+
+**`pgdump` will fail to back up your database if there is a version discrepancy!** Make sure the version of this project you use is built with the same **major** version of Postgres as your current database.
+
+For example, if you upgrade your Postgres database from 12 to **13**, then you must *also* upgrade your reference to this Docker image to one built with Postgres **13**.
+
+**Current Docker image Postgres version:**
+- Postgres 13.3
+
+Check [Releases](https://github.com/MasterKale/docker-pgdump-s3/releases) for older versions to confirm the version of `pgdump` they contain.
+
 ## Quick Start
 
 `docker run -d --env-file=service.env iamkale/docker-pgdump-s3`
