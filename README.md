@@ -1,4 +1,5 @@
 # docker-pgdump-s3
+[![Docker Hub Version Shield](https://img.shields.io/docker/v/iamkale/docker-pgdump-s3/latest?label=Docker%20Hub&style=flat-square)](https://hub.docker.com/r/iamkale/docker-pgdump-s3)
 
 ## Overview
 
