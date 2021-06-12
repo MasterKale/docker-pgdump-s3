@@ -4,7 +4,7 @@
 #
 # Can only be invoked manually
 
-name: ci
+name: Update Docker Hub Description
 
 on:
   workflow_dispatch:
