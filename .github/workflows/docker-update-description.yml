@@ -1,0 +1,21 @@
+# Updates the Docker Hub page with the latest README.md in this repo
+#
+# https://github.com/peter-evans/dockerhub-description
+#
+# Can only be invoked manually
+
+name: ci
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          short-description: ${{ github.event.repository.description }}
