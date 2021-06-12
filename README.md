@@ -1,13 +1,8 @@
 # docker-pgdump-s3
 
-# Overview
+## Overview
 
-A docker container that runs pg_dump and streams the output to s3.
-
-It run inside a docker container on a cron schedule that is specified by the `CRON_SCHEDULE` environment variable.
-
-The original project was designed to run in AWS lambda. Our requirements meant went we needed more than 5 minutes of execution
-time to run `pg_dump`. Therefore, the service has been altered to run on a cron schedule.
+A Docker image for scheduling regular backups of Postgres to S3 via `pgdump`.
 
 The service utilizes AWS S3 multi-part uploads & streaming. This means there is no need for large amounts of local storage where
 the docker container is running, as the data is proxied directly to AWS without being written to disk. This results in a low memory footprint (~50mb) for the running service during backup, and fairly low CPU usage (~5% when testing during dumping).
@@ -18,25 +13,24 @@ The architecture looks like:
 [Postgres DB] ---> [docker-pgdump-s3] ---> [AWS S3 bucket]
 ```
 
-
-# Requirements
+## Requirements
 
 - S3 bucket
 - AWS credentials to push to S3 bucket
 - Postgres host, username, password
 
-# Quick Start
+## Quick Start
 
-`docker run -d --env-file=service.env tozny/pgdump-s3`
+`docker run -d --env-file=service.env iamkale/docker-pgdump-s3`
 
 Or with the environment variables spelled out:
 
 ```
 docker run -d \
-  -e PGPASSWORD=password \
-  -e PGDATABASE=mydatabase \
   -e PGUSER=root \
   -e PGHOST=localhost \
+  -e PGPASSWORD=password \
+  -e PGDATABASE=mydatabase \
   -e S3_BUCKET=muhbucket \
   -e S3_REGION=us-west-2 \
   -e AWS_ACCESS_KEY_ID=AK \
@@ -48,5 +42,5 @@ docker run -d \
   -e S3_URL="s3-fips.us-west-2.amazonaws.com" \
   # only specify if you want AES encrypted backups, otherwise leave out \
   -e ENCRYPTION_PASSWORD=password \
-  tozny/pgdump-s3
+  iamkale/docker-pgdump-s3
 ```
