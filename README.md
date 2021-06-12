@@ -33,26 +33,31 @@ Check [Releases](https://github.com/MasterKale/docker-pgdump-s3/releases) for ol
 
 ## Quick Start
 
+You can quickly get started with a single `docker run` command:
+
 `docker run -d --env-file=service.env iamkale/docker-pgdump-s3`
 
-Or with the environment variables spelled out:
+If you use Docker Compose you can use the following service definition instead:
 
+```yaml
+services:
+  dbbackup:
+    image: iamkale/docker-pgdump-s3
+    depends_on:
+      - db
+    networks:
+      - database_network
+    environment:
+      - PGHOST=db
+      - PGUSER=${POSTGRES_USER}
+      - PGPASSWORD=${POSTGRES_PASSWORD}
+      - PGDATABASE=postgres
+      - S3_BUCKET=db-backups
+      - S3_REGION=us-west-1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      # Everyday @ 1AM
+      - CRON_SCHEDULE="0 1 * * *"
 ```
-docker run -d \
-  -e PGUSER=root \
-  -e PGHOST=localhost \
-  -e PGPASSWORD=password \
-  -e PGDATABASE=mydatabase \
-  -e S3_BUCKET=muhbucket \
-  -e S3_REGION=us-west-2 \
-  -e AWS_ACCESS_KEY_ID=AK \
-  -e AWS_SECRET_ACCESS_KEY=SK \
-  -e PG_PARAMS="-Fp -a" \
-  -e BACKUP_EXTENSION=backup \
-  -e S3_STORAGE_CLASS=GLACIER \
-  -e CRON_SCHEDULE="* * * * *" \
-  -e S3_URL="s3-fips.us-west-2.amazonaws.com" \
-  # only specify if you want AES encrypted backups, otherwise leave out \
-  -e ENCRYPTION_PASSWORD=password \
-  iamkale/docker-pgdump-s3
-```
+> NOTE: values surrounded by `${...}` represent environment variables provided by your project's **.env** file
+
