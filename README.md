@@ -14,12 +14,6 @@ The architecture looks like:
 [Postgres DB] ---> [docker-pgdump-s3] ---> [AWS S3 bucket]
 ```
 
-## Requirements
-
-- S3 bucket
-- AWS credentials to push to S3 bucket
-- Postgres host, username, password
-
 ### A warning about `pgdump`
 
 **`pgdump` will fail to back up your database if there is a version discrepancy!** Make sure the version of this project you use is built with the same **major** version of Postgres as your current database.
