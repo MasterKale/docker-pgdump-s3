@@ -5,7 +5,7 @@
 #
 # Builds whenever a tag of the following format is pushed up: "1.0.0", "2.3.1", etc...
 
-name: ci
+name: Docker Publish
 
 on:
   push:
