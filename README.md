@@ -61,3 +61,27 @@ services:
 ```
 > NOTE: values surrounded by `${...}` represent environment variables provided by your project's **.env** file
 
+## Environment Variables
+
+The following environment variables are available for configuration, and are **required** unless marked optional.
+- `PGHOST`: Database hostname
+- `PGUSER`: Database username
+- `PGPASSWORD`: Database password
+- `PGDATABASE`: Database name
+- `S3_BUCKET`: S3 bucket name
+- `S3_REGION`: S3 bucket's region
+- `AWS_ACCESS_KEY_ID`: AWS access key ID with access to the bucket
+- `AWS_SECRET_ACCESS_KEY`: Corresponding AWS secret access key
+- `CRON_SCHEDULE`: A [valid cron schedule](https://crontab.guru/) to perform backups, wrapped in double-quotes (e.g. `"0 1 * * *"`)
+- (optional) `S3_STORAGE_CLASS`: One of the following values (see [here](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) for more info)
+  - `STANDARD` (default)
+  - `REDUCED_REDUNDANCY`
+  - `STANDARD_IA`
+  - `ONEZONE_IA`
+  - `INTELLIGENT_TIERING`
+  - `GLACIER`
+  - `DEEP_ARCHIVE`
+  - `OUTPOSTS`
+- (optional) `S3_URL`: AWS S3 URL to upload to
+- (optional) `PG_PARAMS`: Parameters to pass to `pgdump`
+- (optional) `BACKUP_EXTENSION`: Backup file extension (defaults to `backup`)
